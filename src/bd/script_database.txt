@@ -1,6 +1,6 @@
 -- Creación de la base de datos
-CREATE DATABASE IF NOT EXISTS DBVENTASDEMO;
-USE DBVENTASDEMO;
+-- CREATE DATABASE IF NOT EXISTS DBVENTASDEMO;
+USE railway;
 
 -- Tabla para roles de usuario
 CREATE TABLE ROL(
@@ -662,7 +662,7 @@ ADD FOREIGN KEY (IdDetalleProforma) REFERENCES DETALLE_PROFORMA(IdDetalleProform
 CREATE INDEX idx_detalle_factura_proforma ON DETALLE_FACTURA(IdDetalleProforma);
 CREATE INDEX idx_detalle_factura_tipo ON DETALLE_FACTURA(TipoDetalle);
 
-use dbventasdemo
+use railway
 
 select * from usuario
 

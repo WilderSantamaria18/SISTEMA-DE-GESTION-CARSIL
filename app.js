@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const FileStore = require('session-file-store')(session);
 const flash = require('connect-flash');
 
 
@@ -18,6 +19,7 @@ app.use(express.json()); // Habilita parseo de JSON en requests
 app.use(methodOverride('_method'));
 
 app.use(session({
+    store: new FileStore({ path: './sessions' }),
     secret: 'carsil-secret', // Cambia esto por una clave segura
     resave: false,
     saveUninitialized: false
@@ -76,6 +78,7 @@ app.use('/reportes', reporteRoutes);
 app.use('/pagos', require('./src/rutas/pagoRoutes'));
 
 const PORT = process.env.PORT || 3000;
+console.log('Starting server on port:', PORT);
 app.listen(PORT, () => {
     console.log(`Servidor iniciado en http://localhost:${PORT}`);
 });
